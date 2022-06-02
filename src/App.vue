@@ -146,7 +146,7 @@ const handleClick = () => {
 
 <template>
 	<main class="app">
-    <div class="border-header">
+    <div v-if="quizStart" class="border-header">
       <h1>Quiz UNICEF</h1>
     </div>
     
@@ -170,14 +170,29 @@ const handleClick = () => {
         <p class="dividing-line">
           - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         </p>
+
         <div class="flex-container">
-          <div class="unicef" min-width="900px">79318923789127381297389127</div>
-          <div class="nextLevelHub">2</div>
-          <div class="eu">3</div>
+          <flex-item class="tiny-text">Uma ação:</flex-item>
+          <flex-item class="tiny-text">Em colaboração com:</flex-item>
+          <flex-item></flex-item>
+        </div>
+        <div class="flex-container">
+          <flex-item class="unicef-logo">
+            <img class="unicef" alt="UNICEF Logo" src="./assets/logo-UNICEF.png">
+          </flex-item>
+          <flex-item>
+            <img class="nlh" alt="NLH Logo" src="./assets/Untitled2.png">
+          </flex-item>
+          <flex-item>
+            <img class="eu" src="./assets/Untitled.png">
+          </flex-item>
         </div>
       </div>
     </section>
 		
+    <div v-if="!quizCompleted && !quizStart" class="border-header-quiz">
+      <h3>Quiz UNICEF</h3>
+    </div>
 		<section class="quiz" v-if="!quizCompleted && !quizStart">
 			<div class="quiz-info">
 				<span class="question">{{ getCurrentQuestion.question }}</span>
@@ -209,12 +224,13 @@ const handleClick = () => {
 						:disabled="getCurrentQuestion.selected"
 						@change="SetAnswer" 
 					/>
-          <div class="option-row">
-            <span class="option-letter mt-2" v-if="index == 0"> A)</span>
+          <div class="flex-container">
+            <span class="option-letter" v-if="index == 0"> A)</span>
             <span class="option-letter" v-if="index == 1"> B)</span>
             <span class="option-letter" v-if="index == 2"> C)</span>
             <span class="option-letter" v-if="index == 3"> D)</span>      
-            <span>{{ option }}</span>
+            <span class="option-content">{{ option }}</span>
+            <span></span>
           </div>
 				</label>
 			</div>
@@ -240,11 +256,27 @@ const handleClick = () => {
 </template>
 
 <style>
+@font-face {
+    font-family: 'Univers';
+    src: url('./assets/fonts/Univers.woff2') format('woff2'),
+        url('./assets/fonts/Univers.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Univers-bold';
+    src: url('./assets/fonts/Univers-bold.woff2') format('woff2'),
+         url('./assets/fonts/Univers-bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Univers", sans-serif;
 }
 body {
     background-color: #1cabe2;
@@ -260,11 +292,30 @@ h1 {
     font-size: 5rem;
     padding: 20px;
 }
+h2 {
+    font-size: 4.5rem;
+    text-align: center;
+}
+h3 {
+  font-size: 3rem;
+  padding: 20px;
+}
 .border-header {
-    font-family: consolas;
     border-radius: 25px;
     background-color: white;
     color: #1cabe2;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 50px;
+    margin-bottom: 50px;
+    margin-top: -20px;
+}
+.border-header-quiz {
+    border-radius: 25px;
+    background-color: white;
+    color: #1cabe2;
+    padding-left: 50px;
+    padding-right: 50px;
     padding-top: 20px;
     margin-bottom: 50px;
     margin-top: -20px;
@@ -288,20 +339,33 @@ h1 {
 }
 .flex-container {
     display: flex;
-    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+flex-container::before {
+  content: "";
+}
+flex-container::after {
+  content: "";
+}
+flex-item {
+  height: 50px;
+  width: 350px;
+  margin-left: -30px;
+  margin-top: 0;
 }
 .left-text {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-left: 100px;
-    width: 790px;
+    width: 700px;
+    text-align: left;
 }
 button {
     appearance: none;
     outline: none;
     border: none;
     cursor: pointer;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
     background-color: #ffffff;
     color: #1cabe2;
     font-weight: bold;
@@ -314,30 +378,33 @@ button:disabled {
 }
 
 .quiz {
-    font-size: 3.5rem;
+    font-size: 3rem;
     text-align: center;
-    max-width: 70%;
+    max-width: 1500px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 0;
 }
 .quiz-info {
-    max-width: 60%;
+    text-align: center;
+    width: 1500px;
+    height: 140px;
     margin: auto;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .options {
     margin-bottom: 1rem;
+    width: 100%;
     font-size: 2rem;
     font-weight: bold;
     color: #1cabe2;
 }
 .option {
-    padding: 1rem;
+    padding: 1.25rem;
     display: block;
     background-color: #fff;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
     border-radius: 2rem;
     height: 100px;
     cursor: pointer;
@@ -346,14 +413,37 @@ button:disabled {
 button:hover {
     background-color: #ececec;
 }
-.option-letter {
-  text-align: left;
-  margin-left: 10px;
-  margin-right: 30px;
-}
-.option-row {
+.option-container {
   display: flex;
 }
+.option-letter {
+  text-align: right;
+}
+.option-content {
+  max-width: 1350px;
+}
+
+.tiny-text {
+  font-size: 1.3rem;
+  text-align: left;
+}
+.tiniest-text {
+  font-size: 0.5rem;
+}
+.unicef {
+  width: 350px;
+}
+.nlh {
+  width: 380px;
+}
+.unicef-logo {
+  margin-left: -50px;
+}
+.eu {
+  width: 600px;
+  margin-left: -50px;
+}
+
 
 
 
@@ -371,10 +461,5 @@ button:hover {
 }
 .option input {
     display: none;
-}
-
-h2 {
-    font-size: 4.5rem;
-    text-align: center;
 }
 </style>
