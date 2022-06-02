@@ -110,7 +110,7 @@ const questions = ref([
 
 let quizStart = ref(true)
 const quizCompleted = ref(false)
-const currentQuestion = ref(0)
+let currentQuestion = ref(0)
 const score = computed(() => {
 	let value = 0
 	questions.value.map(q => {
@@ -136,7 +136,11 @@ const NextQuestion = () => {
 		return
 	}
 	
-	quizCompleted.value = true
+  // TODO: Fix restarting quiz
+  // currentQuestion = ref(0)
+	// quizStart.value = true
+  window.location.reload()
+
 }
 
 const handleClick = () => {
@@ -240,14 +244,15 @@ const handleClick = () => {
 				:disabled="!getCurrentQuestion.selected">
 				{{ 
 					getCurrentQuestion.index == questions.length - 1 
-						? 'Finish' 
+						? 'Terminar Quiz' 
 						: getCurrentQuestion.selected == null
-							? 'Select an option'
-							: 'Next question'
+							? 'Seleciona uma opção'
+							: 'Próxima pergunta'
 				}}
 			</button>
 		</section>
 
+    <!-- TODO: Remove score if not needed -->
 		<section v-if="quizCompleted">
 			<h2>You have finished the quiz!</h2>
 			<p>Your score is {{ score }}/{{ questions.length }}</p>
