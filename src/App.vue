@@ -77,7 +77,7 @@ const questions = ref([
   },
   {
 	question: 'Convidaste um/a amigo/a a ir à praia contigo mas ele/a não se sente totalmente confortável com o seu corpo. O que achas que ele/a deve fazer?',
-	answer: 0,
+	answer: 2,
 	options: [
 		'inventar uma desculpa e não aparecer',
 		'tentar convencer-te que não é uma boa ideia e que deviam fazer outra coisa',
