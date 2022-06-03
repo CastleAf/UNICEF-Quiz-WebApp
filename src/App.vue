@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 import CorrectWrong from './components/CorrectWrong.vue';
 
-const questions = ref([
+const questionss = [
   {
 	question: 'Quando tenho de pedir ajuda é sinal de que:',
 	answer: 2,
@@ -126,7 +126,27 @@ const questions = ref([
   correct: 'A privacidade é um direito que todas as pessoas têm e deve ser respeitado. Agora, mais do que nunca, precisamos de refletir sobre o que partilhamos ou dizemos e sobre a forma como isso pode prejudicar os outros. Vamos criar uma comunidade online mais forte e segura. Está nas nossas mãos!',
   wrong: 'A privacidade é um direito que todas as pessoas têm e deve ser respeitado. É importante pensarmos duas vezes antes de escrever ou publicar conteúdos online que poderão ficar para sempre disponíveis. Podem vir a magoar-te ou a magoar outras pessoas. Vamos criar uma comunidade online mais forte e segura. Está nas nossas mãos!'
   }
-])
+]
+
+function shuffle(array) {
+  let currentIndex = array.length,  randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex != 0) {
+
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+}
+
+ const questions = ref(shuffle(questionss))
 
 const correctWrongScreen = ref(false)
 const correctWrongAnswer = ref(true)

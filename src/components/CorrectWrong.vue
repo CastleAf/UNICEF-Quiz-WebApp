@@ -14,7 +14,7 @@
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       </p>
       <div class="footer">
-        <p>Dirige-te à caixa UNICEF e retira um papel.</p> Boa sorte!
+        <p>Dirige-te à caixa UNICEF e retira um papel.</p> <em>Boa sorte!</em>
       </div>
       <p class="dividing-line-cw">
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
