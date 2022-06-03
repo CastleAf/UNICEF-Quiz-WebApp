@@ -7,7 +7,7 @@ const questions = ref([
 	question: 'Quando tenho de pedir ajuda é sinal de que:',
 	answer: 2,
 	options: [
-		'sou fraco e não consigo fazer as coisas sozinho',
+		'sou fraco/a e não consigo fazer as coisas sozinho/a',
 		'os outros são melhores do que eu',
 		'todos precisamos de ajuda em algum momento e reconhecer isso é um sinal de força'
 	],
@@ -16,12 +16,12 @@ const questions = ref([
   wrong: 'Nem sempre é fácil controlar a ansiedade, a preocupação ou a tristeza, mas isso não significa que não estás a conseguir lidar com a situação. Falar com um amigo, pai, mãe, professor, adulto de confiança sobre como te estás a sentir, é um ato de coragem e poderá ajudar-te.'
   },
   {
-	question: 'Quando me sinto muito ansioso, eu:',
+	question: 'Quando me sinto muito ansioso/a, eu:',
 	answer: 1,
 	options: [
 		'devo ignorar, porque não tem importância ',
 		'devo falar com alguém sobre o que sinto, para que me possam ajudar',
-		'devo ficar sozinho e esperar que passe'
+		'devo ficar sozinho/a e esperar que passe'
 	],
 	selected: null,
   correct: 'É importante que compreendas como te sentes. Não ignores os teus sentimentos. E lembra-te que as pessoas em quem confias te podem ajudar.',
@@ -41,7 +41,7 @@ const questions = ref([
   wrong: 'Todas as emoções, quer sejam positivas ou negativas, têm uma função. Todas dão-nos informações importantes que nos fazem crescer.'
   },
   {
-	question: 'Estou no recreio com os meus amigos e sou o único que quer jogar um jogo. O que posso fazer?',
+	question: 'Estou no recreio com os meus amigos e sou o/a único/a que quer jogar um jogo. O que posso fazer?',
 	answer: 2,
 	options: [
 		'ignoro a opinião dos meus amigos e obrigo-os a fazerem o que eu quero',
@@ -59,11 +59,11 @@ const questions = ref([
 	options: [
 		'não concordo: a solidão é uma emoção negativa que nos faz sentir mal e tento evitá-la sempre que posso',
 		'concordo: todos podemos sentirmo-nos sós, até mesmo quando rodeado de outras pessoas',
-		'não concordo: só sente solidão quem não tem amigos '
+		'não concordo: só sente solidão quem não tem amigos'
 	],
 	selected: null,
-  correct: 'Todos nós podemos passar por situações ou fases em que nos sentimos sozinhos, mesmo com tantas pessoas à nossa volta. É importante estarmos atentos ao que sentimos e mantermos o contacto com a família e com os amigos em quem confiamos.',
-  wrong: 'Os adolescentes que enfrentam mudanças no dia-a-dia, apesar de estarem acompanhados, podem sentir-se sozinhos e desmotivados. Se alguma vez te sentires sozinho, conversa com um/a amigo/a, a tua família, ou alguém em quem confies.'
+  correct: 'Todos nós podemos passar por situações ou fases em que nos sentimos sozinhos/as, mesmo com tantas pessoas à nossa volta. É importante estarmos atentos ao que sentimos e mantermos o contacto com a família e com os amigos em quem confiamos.',
+  wrong: 'Os adolescentes que enfrentam mudanças no dia a dia, apesar de estarem acompanhados, podem sentir-se sozinhos e desmotivados. Se alguma vez te sentires sozinho/a, conversa com um/a amigo/a, a tua família, ou alguém em quem confies.'
   },
   {
 	question: 'Quero muito aprender a andar de skate, mas estou sempre a cair. Qual é a minha reação?',
@@ -71,11 +71,11 @@ const questions = ref([
 	options: [
 		'continuo até conseguir, não sou de desistir, e acredito que vai valer a pena',
 		'desisto e vou andar de bicicleta que já sei andar muito bem',
-		'fico chateado e coloco as culpas no meu skate',
+		'fico chateado/a e coloco as culpas no meu skate',
 	],
 	selected: null,
-  correct: 'Cada pessoa não é as suas circunstâncias, não é aquilo que lhe acontece. Podemos sempre uma escolher o que queremos fazer com o que nos acontece. Já ouviste falar no termo “Resiliência”? É a capacidade de enfrentar as dificuldades de uma forma boa, aprender a ser mais tolerante (aceitar certas falhas ou erros) e flexível (adaptar às situações).',
-  wrong: 'Nem sempre as coisas correm como gostaríamos. É importante trabalharmos a nossa capacidade de transformar os obstáculos em oportunidades. A questão é sempre o que cada um faz com as dificuldades que enfrenta: se queremos focar-nos na frustração ou transformá-la em motivação.'
+  correct: 'Cada pessoa não é as suas circunstâncias, não é aquilo que lhe acontece. Podemos sempre escolher o que queremos fazer com o que nos acontece. Já ouviste falar no termo “Resiliência”? É a capacidade de enfrentar as dificuldades de uma forma boa, aprender a ser mais tolerante (aceitar certas falhas ou erros) e flexível (adaptar às situações).',
+  wrong: 'Nem sempre as coisas correm como gostaríamos. É importante trabalharmos a nossa capacidade de transformar os obstáculos em oportunidades. A questão é sempre o que cada um/a faz com as dificuldades que enfrenta: se queremos focar-nos na frustração ou transformá-la em motivação.'
   },
   {
 	question: 'O que penso em relação ao mundo?',
@@ -99,7 +99,7 @@ const questions = ref([
 		'deve ir, sem pensar muito nisso e tentando aceitar como é'
 	],
 	selected: null,
-  correct: 'Todos nós somos diferentes e também temos formas diferentes de lidar com o nosso corpo e com a nossa aparência. Aprendermos a aceitarmo-nos tal como somos, ajuda-nos a sentirmo-nos melhor e mais felizes. Uma dica: nestas situações, pensa em algo que possas dizer a ti mesmo e que funcione como um incentivo.',
+  correct: 'Todos nós somos diferentes e também temos formas diferentes de lidar com o nosso corpo e com a nossa aparência. Aprendermos a aceitarmo-nos tal como somos, ajuda-nos a sentirmo-nos melhor e mais felizes. Uma dica: nestas situações, pensa em algo que possas dizer a ti mesmo/a e que funcione como um incentivo.',
   wrong: 'Todos nós somos diferentes e também temos formas diferentes de lidar com o nosso corpo e com a nossa aparência. É muito importante trabalharmos a capacidade de nos conhecermos e desenvolvermos um sentimento de empatia connosco próprios e com os outros à nossa volta, tornando-nos mais capazes de nos aceitarmos a nós mesmos e aos outros tal como são.'
   },
   {
@@ -108,11 +108,11 @@ const questions = ref([
 	options: [
 		'ignorar. Todos temos os nossos maus momentos e aquilo deve passar',
 		'falar com um adulto e dizer para o/a ajudarem',
-		'falar com esse amigo/a, ouvir e se necessário, pedir ajuda a um adulto de confiança '
+		'falar com esse amigo/a, ouvir e se necessário, pedir ajuda a um adulto de confiança'
 	],
 	selected: null,
   correct: 'Pode acontecer perceberes que alguém de quem gostas ou conheces não está bem e precisa de ajuda. Perguntares como é que podes ajudar, demonstrar que te importas, poderá fazer toda a diferença para essa pessoa. Se a pessoa estiver em perigo, não tentes resolver a situação sozinho/a, pede ajuda a um adulto de confiança.',
-  wrong: 'Se perceberes que um/a amigo/a precisa de ajuda, fala com ele/a e tenta oferecer apoio. Não fazer nada pode deixar a pessoa a sentir que todos estão contra ele ou que ninguém se importa. As tuas palavras podem fazer a diferença. Se a pessoa estiver em perigo, não tentes resolver a situação sozinho/a, pede ajuda a um adulto de confiança.'
+  wrong: 'Se perceberes que um/a amigo/a precisa de ajuda, fala com ele/a e tenta oferecer apoio. Não fazer nada pode deixar a pessoa a sentir que todos estão contra ele/a ou que ninguém se importa. As tuas palavras podem fazer a diferença. Se a pessoa estiver em perigo, não tentes resolver a situação sozinho/a, pede ajuda a um adulto de confiança.'
   },
   {
 	question: 'Alguém partilhou uma fotografia de um/a amigo/a nas redes sociais sem a sua autorização. Qual é a tua reação?',
