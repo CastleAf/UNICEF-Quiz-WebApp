@@ -145,6 +145,7 @@ const correctWrongText = computed(() => {
 
 const quizStart = ref(true)
 const currentQuestion = ref(0)
+const quizOver = ref(false)
 
 const getCurrentQuestion = computed(() => {
 	let question = questions.value[currentQuestion.value]
@@ -154,13 +155,11 @@ const getCurrentQuestion = computed(() => {
 const SetAnswer = (e) => {
 	questions.value[currentQuestion.value].selected = e.target.value
 	e.target.value = null
+
+  goToCorrectWrongScreen(e.path[1].classList[1])
 }
 const goToCorrectWrongScreen = (q) => {
-  if(currentQuestion.value == questions.value.length - 1) {
-    window.location.reload()
-    return
-  }
-  if (q.selected == q.answer) { correctWrongAnswer.value = true }
+  if (q == "correct") { correctWrongAnswer.value = true }
   else { correctWrongAnswer.value = false }
 
   correctWrongScreen.value = true
@@ -171,6 +170,7 @@ const NextQuestion = () => {
 		currentQuestion.value++
 		return
 	}
+  quizOver.value = true
   window.location.reload()
 
 }
@@ -180,6 +180,28 @@ const handleClick = () => {
 const refresh = () => {
   window.location.reload()
 }
+
+// Timeout -> Restart quiz when idle for 1 minute
+var inactivityTime = function () {
+  var time;
+  window.onload = resetTimer;
+  // DOM Events
+  document.onmousemove = resetTimer;
+  document.onkeydown = resetTimer;
+
+  function logout() {
+    window.location.reload()
+  }
+
+  function resetTimer() {
+    clearTimeout(time);
+    time = setTimeout(logout, 45000)
+    }
+};
+window.onload = function() {
+  inactivityTime();
+}
+
 </script>
 
 <template>
@@ -231,7 +253,7 @@ const refresh = () => {
     <div v-if="!quizStart" class="border-header-quiz">
       <h3>Quiz UNICEF</h3>
     </div>
-		<section class="quiz" v-if="!correctWrongScreen && !quizStart">
+		<section class="quiz" v-if="!correctWrongScreen && !quizStart && !quizOver">
 			<div class="quiz-info">
 				<span class="question">{{ getCurrentQuestion.question }}</span>
 			</div>
@@ -260,7 +282,7 @@ const refresh = () => {
 						:value="index" 
 						v-model="getCurrentQuestion.selected" 
 						:disabled="getCurrentQuestion.selected"
-						@change="SetAnswer" 
+						@change="SetAnswer"
 					/>
           <div class="flex-container">
             <span class="option-letter" v-if="index == 0"> A)</span>
@@ -272,18 +294,6 @@ const refresh = () => {
           </div>
 				</label>
 			</div>
-			
-			<button 
-				@click="goToCorrectWrongScreen(getCurrentQuestion)"
-				:disabled="!getCurrentQuestion.selected">
-				{{ 
-					getCurrentQuestion.index == questions.length - 1 
-						? 'Terminar Quiz' 
-						: getCurrentQuestion.selected == null
-							? 'Seleciona uma opção'
-							: 'Próxima pergunta'
-				}}
-			</button>
 		</section>
 
 		<section v-if="correctWrongScreen" @click="NextQuestion">

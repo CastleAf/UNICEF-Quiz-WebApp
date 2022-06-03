@@ -65,7 +65,7 @@ export default {
 }
 .mainMessage h3 {
   font-weight: 400;
-  font-size: 3.2rem;
+  font-size: 3.1rem;
 }
 .dividing-line-cw {
     font-size: 2.5rem;
