@@ -1,6 +1,7 @@
 <script setup>
-
 import { ref, computed } from 'vue'
+import CorrectWrong from './components/CorrectWrong.vue';
+
 const questions = ref([
   {
 	question: 'Quando tenho de pedir ajuda é sinal de que:',
@@ -10,7 +11,9 @@ const questions = ref([
 		'os outros são melhores do que eu',
 		'todos precisamos de ajuda em algum momento e reconhecer isso é um sinal de força'
 	],
-	selected: null
+	selected: null,
+  correct: 'Às vezes, podemos sentir-nos tristes, preocupados, ansiosos ou sem esperança. Estes pensamentos não são raros e não deves sentir vergonha se os tiveres. E lembra-te que não estás sozinho/a, há pessoas que te podem ajudar.',
+  wrong: 'Nem sempre é fácil controlar a ansiedade, a preocupação ou a tristeza, mas isso não significa que não estás a conseguir lidar com a situação. Falar com um amigo, pai, mãe, professor, adulto de confiança sobre como te estás a sentir, é um ato de coragem e poderá ajudar-te.'
   },
   {
 	question: 'Quando me sinto muito ansioso, eu:',
@@ -20,7 +23,9 @@ const questions = ref([
 		'devo falar com alguém sobre o que sinto, para que me possam ajudar',
 		'devo ficar sozinho e esperar que passe'
 	],
-	selected: null
+	selected: null,
+  correct: 'É importante que compreendas como te sentes. Não ignores os teus sentimentos. E lembra-te que as pessoas em quem confias te podem ajudar.',
+  wrong: 'É normal sentires o que sentes. Obrigares-te a estar sempre “feliz”, “positivo" ou “produtivo” pode fazer-te sentir pior. Saber lidar com os desafios é aprender a pensar ativamente sobre eles e conversar com alguém em quem confiamos sobre como nos sentimos e quais as melhores formas de lidar com a situação.'
   },
   {
 	question: 'Todas as nossas emoções são importantes!',
@@ -31,7 +36,9 @@ const questions = ref([
 		'falso, só são importantes as emoções positivas',
     'verdadeiro, mas devemos ignorar as emoções negativas'
 	],
-	selected: null
+	selected: null,
+  correct: 'Cada pessoa interpreta o que se passa à sua volta de forma diferente e isso tem impacto na maneira como nos sentimos e comportamos. Reconhecer, expressar e lidar com as emoções contribui para o nosso desenvolvimento emocional.',
+  wrong: 'Todas as emoções, quer sejam positivas ou negativas, têm uma função. Todas dão-nos informações importantes que nos fazem crescer.'
   },
   {
 	question: 'Estou no recreio com os meus amigos e sou o único que quer jogar um jogo. O que posso fazer?',
@@ -42,7 +49,9 @@ const questions = ref([
 		'ouvimos a opinião uns dos outros e, em equipa, decidimos o que fazer',
     'não digo nada porque a minha opinião não importa e faço o que eles quiserem'
 	],
-	selected: null
+	selected: null,
+  correct: 'É importante respeitarmos os interesses, a vontade e os gostos de cada pessoa. Podemos ser diferentes e mesmo assim encontrar pontos em comum. Já pensaste que também pode ser uma oportunidade para aprenderes com os outros?',
+  wrong: 'É importante respeitarmos as outras pessoas como são, com gostos e interesses diferentes dos nossos. O diálogo e a colaboração ajudam-nos a encontrarmos soluções em grupo e a identificarmos pontos em comum que não sabíamos que tínhamos com as outras pessoas.'
   },
   {
 	question: 'A solidão é uma emoção que faz parte da adolescência. Concordas?',
@@ -52,7 +61,9 @@ const questions = ref([
 		'concordo: todos podemos sentirmo-nos sós, até mesmo quando rodeado de outras pessoas',
 		'não concordo: só sente solidão quem não tem amigos '
 	],
-	selected: null
+	selected: null,
+  correct: 'Todos nós podemos passar por situações ou fases em que nos sentimos sozinhos, mesmo com tantas pessoas à nossa volta. É importante estarmos atentos ao que sentimos e mantermos o contacto com a família e com os amigos em quem confiamos.',
+  wrong: 'Os adolescentes que enfrentam mudanças no dia-a-dia, apesar de estarem acompanhados, podem sentir-se sozinhos e desmotivados. Se alguma vez te sentires sozinho, conversa com um/a amigo/a, a tua família, ou alguém em quem confies.'
   },
   {
 	question: 'Quero muito aprender a andar de skate, mas estou sempre a cair. Qual é a minha reação?',
@@ -62,7 +73,9 @@ const questions = ref([
 		'desisto e vou andar de bicicleta que já sei andar muito bem',
 		'fico chateado e coloco as culpas no meu skate',
 	],
-	selected: null
+	selected: null,
+  correct: 'Cada pessoa não é as suas circunstâncias, não é aquilo que lhe acontece. Podemos sempre uma escolher o que queremos fazer com o que nos acontece. Já ouviste falar no termo “Resiliência”? É a capacidade de enfrentar as dificuldades de uma forma boa, aprender a ser mais tolerante (aceitar certas falhas ou erros) e flexível (adaptar às situações).',
+  wrong: 'Nem sempre as coisas correm como gostaríamos. É importante trabalharmos a nossa capacidade de transformar os obstáculos em oportunidades. A questão é sempre o que cada um faz com as dificuldades que enfrenta: se queremos focar-nos na frustração ou transformá-la em motivação.'
   },
   {
 	question: 'O que penso em relação ao mundo?',
@@ -73,7 +86,9 @@ const questions = ref([
 		'acho que tem mais pessoas boas do que más',
     'acho que o mundo é feito de muitas pessoas diferentes e é preciso conhecê-las para saber se são boas ou más'
 	],
-	selected: null
+	selected: null,
+  correct: 'Quando olhamos para uma pessoa (seja uma pessoa próxima ou uma pessoa que não conhecemos), é importante lembrarmo-nos que ela é muito mais do que aparenta ser. É preciso conhecer quem a pessoa é de verdade.',
+  wrong: 'Quando olhamos para uma pessoa (seja uma pessoa próxima ou uma pessoa que não conhecemos), é importante lembrarmo-nos que ela é muito mais do que aparenta ser. É preciso conhecer quem a pessoa é de verdade.'
   },
   {
 	question: 'Convidaste um/a amigo/a a ir à praia contigo mas ele/a não se sente totalmente confortável com o seu corpo. O que achas que ele/a deve fazer?',
@@ -83,7 +98,9 @@ const questions = ref([
 		'tentar convencer-te que não é uma boa ideia e que deviam fazer outra coisa',
 		'deve ir, sem pensar muito nisso e tentando aceitar como é'
 	],
-	selected: null
+	selected: null,
+  correct: 'Todos nós somos diferentes e também temos formas diferentes de lidar com o nosso corpo e com a nossa aparência. Aprendermos a aceitarmo-nos tal como somos, ajuda-nos a sentirmo-nos melhor e mais felizes. Uma dica: nestas situações, pensa em algo que possas dizer a ti mesmo e que funcione como um incentivo.',
+  wrong: 'Todos nós somos diferentes e também temos formas diferentes de lidar com o nosso corpo e com a nossa aparência. É muito importante trabalharmos a capacidade de nos conhecermos e desenvolvermos um sentimento de empatia connosco próprios e com os outros à nossa volta, tornando-nos mais capazes de nos aceitarmos a nós mesmos e aos outros tal como são.'
   },
   {
 	question: 'Reparaste que um/a amigo/a precisa de ajuda. O que deves fazer?',
@@ -93,7 +110,9 @@ const questions = ref([
 		'falar com um adulto e dizer para o/a ajudarem',
 		'falar com esse amigo/a, ouvir e se necessário, pedir ajuda a um adulto de confiança '
 	],
-	selected: null
+	selected: null,
+  correct: 'Pode acontecer perceberes que alguém de quem gostas ou conheces não está bem e precisa de ajuda. Perguntares como é que podes ajudar, demonstrar que te importas, poderá fazer toda a diferença para essa pessoa. Se a pessoa estiver em perigo, não tentes resolver a situação sozinho/a, pede ajuda a um adulto de confiança.',
+  wrong: 'Se perceberes que um/a amigo/a precisa de ajuda, fala com ele/a e tenta oferecer apoio. Não fazer nada pode deixar a pessoa a sentir que todos estão contra ele ou que ninguém se importa. As tuas palavras podem fazer a diferença. Se a pessoa estiver em perigo, não tentes resolver a situação sozinho/a, pede ajuda a um adulto de confiança.'
   },
   {
 	question: 'Alguém partilhou uma fotografia de um/a amigo/a nas redes sociais sem a sua autorização. Qual é a tua reação?',
@@ -103,24 +122,30 @@ const questions = ref([
 		'não fazer nada. Já se sabe que nas redes sociais tudo pode acontecer!',
 		'partilhar essa fotografia com outras pessoas, porque agora é publico'
 	],
-	selected: null
+	selected: null,
+  correct: 'A privacidade é um direito que todas as pessoas têm e deve ser respeitado. Agora, mais do que nunca, precisamos de refletir sobre o que partilhamos ou dizemos e sobre a forma como isso pode prejudicar os outros. Vamos criar uma comunidade online mais forte e segura. Está nas nossas mãos!',
+  wrong: 'A privacidade é um direito que todas as pessoas têm e deve ser respeitado. É importante pensarmos duas vezes antes de escrever ou publicar conteúdos online que poderão ficar para sempre disponíveis. Podem vir a magoar-te ou a magoar outras pessoas. Vamos criar uma comunidade online mais forte e segura. Está nas nossas mãos!'
   }
 ])
 
+const correctWrongScreen = ref(false)
+const correctWrongAnswer = ref(true)
+const correctWrongText = computed(() => {
+	let text = ""
+  let q = questions.value[currentQuestion.value]
 
-let quizStart = ref(true)
-const quizCompleted = ref(false)
-let currentQuestion = ref(0)
-const score = computed(() => {
-	let value = 0
-	questions.value.map(q => {
-		if (q.selected != null && q.answer == q.selected) {
-			console.log('correct');
-			value++
-		}
-	})
-	return value
+  if (q.selected != null && q.answer == q.selected) {
+    text = q.correct
+  }
+  else {
+    text = q.wrong
+  }
+	return text
 })
+
+const quizStart = ref(true)
+const currentQuestion = ref(0)
+
 const getCurrentQuestion = computed(() => {
 	let question = questions.value[currentQuestion.value]
 	question.index = currentQuestion.value
@@ -130,21 +155,30 @@ const SetAnswer = (e) => {
 	questions.value[currentQuestion.value].selected = e.target.value
 	e.target.value = null
 }
+const goToCorrectWrongScreen = (q) => {
+  if(currentQuestion.value == questions.value.length - 1) {
+    window.location.reload()
+    return
+  }
+  if (q.selected == q.answer) { correctWrongAnswer.value = true }
+  else { correctWrongAnswer.value = false }
+
+  correctWrongScreen.value = true
+}
 const NextQuestion = () => {
+  correctWrongScreen.value = false
 	if (currentQuestion.value < questions.value.length - 1) {
 		currentQuestion.value++
 		return
 	}
-	
-  // TODO: Fix restarting quiz
-  // currentQuestion = ref(0)
-	// quizStart.value = true
   window.location.reload()
 
 }
-
 const handleClick = () => {
   quizStart.value = false
+}
+const refresh = () => {
+  window.location.reload()
 }
 </script>
 
@@ -194,10 +228,10 @@ const handleClick = () => {
       </div>
     </section>
 		
-    <div v-if="!quizCompleted && !quizStart" class="border-header-quiz">
+    <div v-if="!quizStart" class="border-header-quiz">
       <h3>Quiz UNICEF</h3>
     </div>
-		<section class="quiz" v-if="!quizCompleted && !quizStart">
+		<section class="quiz" v-if="!correctWrongScreen && !quizStart">
 			<div class="quiz-info">
 				<span class="question">{{ getCurrentQuestion.question }}</span>
 			</div>
@@ -240,7 +274,7 @@ const handleClick = () => {
 			</div>
 			
 			<button 
-				@click="NextQuestion" 
+				@click="goToCorrectWrongScreen(getCurrentQuestion)"
 				:disabled="!getCurrentQuestion.selected">
 				{{ 
 					getCurrentQuestion.index == questions.length - 1 
@@ -252,11 +286,12 @@ const handleClick = () => {
 			</button>
 		</section>
 
-    <!-- TODO: Remove score if not needed -->
-		<section v-if="quizCompleted">
-			<h2>You have finished the quiz!</h2>
-			<p>Your score is {{ score }}/{{ questions.length }}</p>
+		<section v-if="correctWrongScreen" @click="NextQuestion">
+      <CorrectWrong :flag="correctWrongAnswer" :msg="correctWrongText"></CorrectWrong>
 		</section>
+    <div v-if="!quizStart" class="fixedHouseButton">
+      <i @click="refresh" class="fa-solid fa-house house"></i>
+    </div>
 	</main>
 </template>
 
@@ -410,7 +445,7 @@ button:disabled {
     display: block;
     background-color: #fff;
     margin-bottom: 1.5rem;
-    border-radius: 2rem;
+    border-radius: 3rem;
     height: 100px;
     cursor: pointer;
 }
@@ -447,6 +482,22 @@ button:hover {
 .eu {
   width: 600px;
   margin-left: -50px;
+}
+.fixedHouseButton {
+  position: fixed;
+  bottom: 80px;
+  right: 100px;
+}
+.house {
+  font-size: 4rem;
+  color: #1cabe2;
+  background: #fff;
+  padding:15px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.house:hover {
+  background-color: #ececec;
 }
 
 
