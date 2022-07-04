@@ -1,5 +1,8 @@
 # quiz_app
 
+Quiz App developed for a children's event organized by UNICEF.
+*Attention:* This was programmed solely for the event where screen of a size of 1920x1080 were used. The webapp isn't responsive therefore on other screens it might fail to run.
+
 ## Project setup
 ```
 npm install
