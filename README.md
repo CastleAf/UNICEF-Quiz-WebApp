@@ -6,6 +6,8 @@ Quiz App developed for a children's event organized by UNICEF.
 
 The website with the running WebApp can be found [here](https://www.quizunicef.pt/).
 
+---
+
 ## Project setup
 ```
 npm install
