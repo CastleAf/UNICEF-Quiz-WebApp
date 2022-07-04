@@ -1,4 +1,4 @@
-# quiz_app
+# UNICEF Quiz WebApp
 
 Quiz App developed for a children's event organized by UNICEF.
 
